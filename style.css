@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+}
+
+.player-container {
+  height: 500px;
+  width: 350px;
+  background-color: #dfdfdf;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 15px 20px 5px;
+}
+
+.img-container {
+  height: 300px;
+  width: 300px;
+  position: relative;
+  top: 25px;
+  left: 25px;
+}
+
+.img-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 30px 7px; */
+}
+
+h2 {
+  font-size: 25px;
+  text-align: center;
+  margin: 50px 0px 0px 0px;
+  font-weight: 900;
+}
+
+h3 {
+  font-size: 20px;
+  text-align: center;
+  font-weight: unset;
+  margin: 2px;
+}
+
+/* Progress */
+.progress-container {
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 15px 20px;
+  height: 5px;
+  width: 90%;
+}
+
+.progress {
+  background: #242323;
+  border-radius: 5px;
+  height: 100%;
+  /* change this to show progress */
+  width: 66%;
+  transition: width 0.1s linear;
+}
+
+.duration-wrapper {
+  position: relative;
+  top: -25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Controls */
+.player-controls {
+  position: relative;
+  top: -5px;
+  left: 80px;
+  width: 300px;
+}
+
+.bi {
+  font-size: 45px;
+  color: rgb(27, 27, 27);
+  margin-right: 30px;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.bi:hover,
+.bi:focus,
+.bi:active {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+.main-button {
+  font-size: 40px;
+  position: relative;
+  top: 3px;
+}
+
+/* Media Query: iPhone (Vertical) */
+@media screen and (max-width: 375px) {
+  .player-container {
+    width: 95vw;
+  }
+
+  .img-container {
+    left: 29px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 15px;
+  }
+
+  .player-controls {
+    top: -3px;
+    left: 85px;
+  }
+}
