@@ -58,7 +58,7 @@ h3 {
   background: #fff;
   border-radius: 5px;
   cursor: pointer;
-  margin: 15px 20px;
+  margin: 20px auto 20px auto;
   height: 5px;
   width: 90%;
 }
@@ -67,8 +67,7 @@ h3 {
   background: #242323;
   border-radius: 5px;
   height: 100%;
-  /* change this to show progress */
-  width: 66%;
+  width: 0%;
   transition: width 0.1s linear;
 }
 

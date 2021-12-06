@@ -4,6 +4,11 @@ const playButton = document.querySelector('#play');
 const skipButton = document.querySelector('#skip');
 const title = document.querySelector('#title');
 const artist = document.querySelector('#artist');
+const progressContainer = document.querySelector('#progress-container');
+const progress = document.querySelector('#progess');
+const durationElement = document.querySelector('#duration');
+const currentTimeElement = document.querySelector('#current-time');
+
 
 let isPlaying = false;
 
@@ -103,6 +108,52 @@ function prevSong(){
 // if songIndex = 2 then loadSong func will load the third index in the songInfo array
 loadSong(songInfo[songIndex]);
 
-// // add event listener to the buttons
+// update progess bar and time 
+function updateProgressBar(e) {
+    if (isPlaying) {
+        // object destructuring:
+        const { duration, currentTime } = music;
+        // update progress bar width
+        const progressPercentage = (currentTime / duration) * 100;
+        // change width in css ( covert number to string )
+        progress.style.width = `${progressPercentage}%`;
+        // display duration
+        const durationMinutes = Math.floor(duration / 60);
+        let durationSeconds = Math.floor(duration % 60);
+        // avoid NaN
+        if (durationSeconds) {
+            durationElement.textContent = `${durationMinutes}:${durationSeconds}`;
+        }
+
+        // display current time:
+        const currentMinutes = Math.floor(currentTime / 60);
+        let currentSeconds = Math.floor(currentTime % 60);        
+        // avoid NaN
+        if (currentSeconds) {
+        currentTimeElement.textContent = `${currentMinutes}:${currentSeconds}`;
+        }
+        
+    }
+}
+
+// set progess bar:
+    function setProgressBar(e) {
+        // total width
+        const width = this.clientWidth;
+        // current width when clicked
+        const clickX = e.offsetX;
+        const { duration } = music;
+        music.currentTime = (clickX / width) * duration;
+    }
+
+// add event listener to the buttons
 prevButton.addEventListener('click', prevSong);
 skipButton.addEventListener('click', skipSong);
+
+// progress bar event:
+music.addEventListener('timeupdate', updateProgressBar);
+
+// set progress bar event:
+progressContainer.addEventListener('click', setProgressBar);
+
+music.addEventListener('ended', skipSong);
